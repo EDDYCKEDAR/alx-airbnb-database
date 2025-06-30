@@ -5,36 +5,36 @@ This document outlines the normalization process applied to the Airbnb Clone bac
 
 ---
 
-## ✅ First Normal Form (1NF)
+##  First Normal Form (1NF)
 
 **Rule:** Each table must have a primary key and all attributes must be atomic (no repeating groups or arrays).
 
-### ✅ Applied:
+###  Applied:
 - All attributes are atomic (e.g., no multiple emails or roles in one field).
 - Primary keys are clearly defined (e.g., `user_id`, `property_id`, etc.).
 - Fields like `location`, `description`, and `pricepernight` are stored in single-value columns.
 
-**✔️ All tables are in 1NF.**
+** All tables are in 1NF.**
 
 ---
 
-## ✅ Second Normal Form (2NF)
+##  Second Normal Form (2NF)
 
 **Rule:** Must be in 1NF + No partial dependency (non-key attributes depend on whole primary key).
 
-### ✅ Applied:
+###  Applied:
 - All tables have **single-column primary keys** (UUIDs), so no composite key issues.
 - All non-key attributes depend fully on their table's primary key.
 
-**✔️ All tables are in 2NF.**
+** All tables are in 2NF.**
 
 ---
 
-## ✅ Third Normal Form (3NF)
+##  Third Normal Form (3NF)
 
 **Rule:** Must be in 2NF + No transitive dependency (non-key attributes do not depend on other non-key attributes).
 
-### 🧪 Review Example: `User` Table
+### Review Example: `User` Table
 ```text
 user_id | first_name | last_name | email | password_hash | phone_number | role | created_at
 ```
@@ -42,7 +42,7 @@ user_id | first_name | last_name | email | password_hash | phone_number | role |
 - No derived fields (e.g., full name isn’t stored).
 - `role` is atomic and stored as an ENUM, not repeating or derived.
 
-### 🧪 Review Example: `Booking` Table
+###  Review Example: `Booking` Table
 ```text
 booking_id | property_id | user_id | start_date | end_date | total_price | status | created_at
 ```
@@ -53,15 +53,15 @@ booking_id | property_id | user_id | start_date | end_date | total_price | statu
 
 ---
 
-## 🔧 Adjustments Made:
+## Adjustments Made:
 
-- ✅ Replaced any composite keys with UUIDs.
-- ✅ Ensured ENUMs are used correctly (e.g., role, status, payment method).
-- ✅ No multivalued fields or calculated fields stored unnecessarily.
-- ✅ All foreign key relationships clearly reference primary keys.
+- Replaced any composite keys with UUIDs.
+- nsured ENUMs are used correctly (e.g., role, status, payment method).
+- No multivalued fields or calculated fields stored unnecessarily.
+- All foreign key relationships clearly reference primary keys.
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 All entities are normalized to **Third Normal Form (3NF)** with no redundancy or update anomalies. This enhances data integrity and scalability for the Airbnb backend system.
