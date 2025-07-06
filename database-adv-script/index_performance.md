@@ -23,6 +23,7 @@ After analyzing common queries using `WHERE`, `JOIN`, and `ORDER BY`, we identif
 The following SQL commands create indexes on the identified high-usage columns. These should be saved in a file named: `database_index.sql`.
 
 ```sql
+database_index.sql
 -- Indexes for User table
 CREATE INDEX idx_user_email ON User(email);
 CREATE INDEX idx_user_age ON User(age);
@@ -66,15 +67,5 @@ Edit
 
 ---
 
-### ✅ Instructions
-
-1. **Copy the entire content above** into a file called `index_performance.md`.
-2. **Save the SQL part** into a separate file called `database_index.sql`.
-3. Place both files in the `database-adv-script/` directory in your repo.
-4. Run:
-   ```bash
-   git add .
-   git commit -m "Add index optimization scripts and documentation"
-   git push
 
 
