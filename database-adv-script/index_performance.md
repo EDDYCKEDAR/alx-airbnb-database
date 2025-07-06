@@ -180,6 +180,16 @@ SELECT * FROM sys.dm_db_missing_index_details;
 -- Monitor query performance
 SHOW PROFILE FOR QUERY 1;
 ```
+database_index.sql
+
+-- Create an index on the "age" column since it's used in filtering
+CREATE INDEX idx_user_age ON user_data(age);
+
+-- Optionally, create an index on the "email" column if queries involve lookups by email
+CREATE INDEX idx_user_email ON user_data(email);
+
+-- If you're joining on or frequently filtering by "user_id", indexing it is also recommended
+CREATE UNIQUE INDEX idx_user_id ON user_data(user_id);
 
 ### Continuous Optimization
 1. **Regular Analysis**: Monthly performance reviews
